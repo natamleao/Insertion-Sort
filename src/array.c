@@ -25,9 +25,14 @@ Array* arrayCreate(int _size, int _capacity){
     Array *array = (Array*)malloc(sizeof(Array));
     if(!array) return NULL;
 
-    array->_data = NULL;
     array->_size = _size;
     array->_capacity = _capacity;
+
+    array->_data = (float*)calloc(_capacity, sizeof(float)); // <--- alocação do vetor
+    if(!array->_data){
+        free(array);
+        return NULL;
+    }
 
     return array;
 }
