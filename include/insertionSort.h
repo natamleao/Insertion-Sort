@@ -6,11 +6,11 @@
 #include "array.h"
 
 /**
- * @brief Ordena o vetor na estrutura usando o algoritmo Insertion Sorte.
+ * @brief Chama a função `insertionSorte` incapsulada.
  * 
- *  @param array Ponteiro para a estrutura do array.
+ * @param a Ponteiro para o array.
  */
-void insertionSorte(Array *array);
+void insertionSortWrapper(void *a);
 
 #endif
 

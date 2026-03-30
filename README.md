@@ -63,14 +63,14 @@ O algoritmo percorre o array e, a cada passo, insere o elemento atual na posiç�
 * **Caso médio:** `O(n²)`
 * **Pior caso:** `O(n²)`
 
----
+--- 
 
 ## Medição de tempo
 
 O projeto utiliza `clock_gettime` com `CLOCK_MONOTONIC`, evitando interferência de ajustes no relógio do sistema.
 
 ```c
-double executionTime = executionTimeCalculate(insertionSorte, array);
+double executionTime = executionTimeCalculate(insertionSortWrapper, array);
 executionTimePrint(executionTime);
 ```
 

@@ -28,7 +28,7 @@ int main(){
 
     //arrayPrint(array);
     
-    double executionTime = executionTimeCalculate(insertionSorte, array);
+    double executionTime = executionTimeCalculate(insertionSortWrapper, array);
 
     //arrayPrint(array);
 

@@ -1,8 +1,8 @@
 #include "../include/array.h"
 
-/******************************************************* INTERFACE PUBLICA *******************************************************/
+/******************************************************* INTERFACE PRIVADA *******************************************************/
 
-void insertionSorte(Array *array){
+void insertionSort(Array *array){
     for(int i = 1; i < arrayGetSize(array); i++){
         float key = arrayGetArray(array)[i];
         int j = i - 1;
@@ -14,6 +14,12 @@ void insertionSorte(Array *array){
 
         arrayAddValue(array, j + 1, key);
     }
+}
+
+/******************************************************* INTERFACE PUBLICA *******************************************************/
+
+void insertionSortWrapper(void *a) {
+    insertionSort((Array*)a);
 }
 
 /*********************************************************************************************************************************/
