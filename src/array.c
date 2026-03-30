@@ -11,8 +11,6 @@ struct _array{
     int _capacity;
 };
 
-void arrayIncrementCapacity(Array *array){array->_capacity++;}
-void arrayDecrementCapacity(Array *array){array->_capacity--;}
 void arrayIncrementSize(Array *array){array->_size++;}
 void arrayDecrementSize(Array *array){array->_size--;}
 
@@ -37,12 +35,18 @@ Array* arrayCreate(int _size, int _capacity){
 float* arrayGetArray(Array *array){return array->_data;}
 int arrayGetCapacity(Array *array){return array->_capacity;}
 int arrayGetSize(Array *array){return array->_size;}
+float arrayGetValue(Array *array, int index){return array->_data[index];}
 
 void arraySetArray(Array *array, float *_array){array->_data = _array;}
 void arraySetCapacity(Array *array, int value){array->_capacity = value;}
 void arraySetSize(Array *array, int value){array->_size = value;}
 
-void arrayAddValue(Array *array, int index, float value){array->_data[index] = value;}
+void arrayChange(Array *array, int index, float value){array->_data[index] = value;}
+
+void arrayAddValue(Array *array, int index, float value){
+    array->_data[index] = value;
+    arrayIncrementSize(array);
+}
 
 void arrayPrint(Array *array){
     printf("["); 

@@ -9,16 +9,16 @@ typedef struct _array Array;
 /**
  * @brief Cria a estrutura de um array.
  *
- * @param size Quantidade de elementos válidos no array.
- * @param capacity Capacidade máxima que o array deve ter (>= array_size).
- * @return Ponteiro para o array alocado, ou NULL se falhar.
+ * @param size Quantidade de elementos válidos inicialmente no array.
+ * @param capacity Capacidade máxima do array (deve ser >= size).
+ * @return Ponteiro para o array alocado, ou NULL em caso de falha.
  */
 Array* arrayCreate(int size, int capacity);
 
 /**
  * @brief Retorna o vetor interno de dados do array.
  *
- * Permite acesso direto ao array que armazena os elementos do array.
+ * Permite acesso direto ao array que armazena os elementos.
  *
  * @param array Ponteiro para a estrutura do array.
  * @return Ponteiro para o vetor de floats que representa os dados.
@@ -28,80 +28,83 @@ float* arrayGetArray(Array *array);
 /**
  * @brief Retorna a capacidade máxima do array.
  *
- * Informa quantos elementos o array pode armazenar antes de ocorrer overflow.
- *
  * @param array Ponteiro para a estrutura do array.
- * @return Capacidade máxima do array.
+ * @return Número máximo de elementos que o array pode armazenar.
  */
 int arrayGetCapacity(Array *array);
 
 /**
  * @brief Retorna o tamanho atual do array.
  *
- * Indica quantos elementos válidos estão armazenados no array no momento.
- *
  * @param array Ponteiro para a estrutura do array.
- * @return Número de elementos atualmente no array.
+ * @return Número de elementos atualmente válidos no array.
  */
 int arrayGetSize(Array *array);
 
 /**
- * @brief Define o valor de um elemento no array.
- *
- * Altera diretamente o valor armazenado no índice especificado.
+ * @brief Retorna o valor de um elemento no array.
  *
  * @param array Ponteiro para a estrutura do array.
- * @param array Ponteiro para um array.
+ * @param index Índice do elemento a ser retornado.
+ * @return Valor do elemento no índice especificado.
+ */
+float arrayGetValue(Array *array, int index);
+
+/**
+ * @brief Substitui o vetor interno de dados do array.
+ *
+ * @param array Ponteiro para a estrutura do array.
+ * @param _array Novo vetor de floats que substituirá os dados atuais.
  */
 void arraySetArray(Array *array, float *_array);
 
 /**
- * @brief Ajusta a capacidade do array.
- *
- * Altera a capacidade máxima em relação ao valor atual.
+ * @brief Ajusta a capacidade máxima do array.
  *
  * @param array Ponteiro para a estrutura do array.
- * @param value Valor a ser adicionado à capacidade.
+ * @param value Nova capacidade máxima ou incremento de capacidade.
  */
 void arraySetCapacity(Array *array, int value);
 
 /**
  * @brief Ajusta o tamanho atual do array.
  *
- * Altera o campo `size` em relação ao valor atual.
- *
  * @param array Ponteiro para a estrutura do array.
- * @param value Valor a ser adicionado ao tamanho.
+ * @param value Novo tamanho ou incremento do tamanho atual.
  */
 void arraySetSize(Array *array, int value);
 
 /**
- * @brief Adiciona um valor 'value' em uma posição 'idenx' no vetor
- * 
+ * @brief Modifica o valor de um elemento no índice especificado.
+ *
  * @param array Ponteiro para a estrutura do array.
- * @param index Indice do vetor no qual se quer adicionar o valor.
- * @param value Valor que se quer adicionar ao vetor,
+ * @param index Índice do elemento a ser alterado.
+ * @param value Novo valor a ser armazenado.
+ */
+void arrayChange(Array *array, int index, float value);
+
+/**
+ * @brief Adiciona um valor a um elemento no índice especificado.
+ *
+ * @param array Ponteiro para a estrutura do array.
+ * @param index Índice do elemento.
+ * @param value Valor a ser adicionado ao valor atual do elemento.
  */
 void arrayAddValue(Array *array, int index, float value);
 
 /**
  * @brief Imprime todos os elementos do array no console.
  *
- * A função percorre o vetor interno do array do índice 0 até array->size - 1
- * e imprime os valores. 
+ * @param array Ponteiro para a estrutura do array.
  *
- * @param array Ponteiro para o array a ser impresso.
- *
- * @note Os elementos são impressos na ordem interna do vetor, não necessariamente
- *       em ordem decrescente de valor.
+ * @note Os elementos são impressos na ordem interna do vetor.
  */
 void arrayPrint(Array *array);
 
 /**
  * @brief Libera toda a memória usada pelo array.
  *
- * Desaloca o vetor interno de dados (`data`) e a própria estrutura
- * do array. 
+ * Desaloca o vetor interno de dados e a própria estrutura do array.
  *
  * @param array Ponteiro para a estrutura do array a ser destruída.
  */

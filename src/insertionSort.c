@@ -8,11 +8,11 @@ void insertionSort(Array *array){
         int j = i - 1;
 
         while(arrayGetArray(array)[j] > key && j >= 0){
-            arrayAddValue(array, j + 1, arrayGetArray(array)[j]);
+            arrayChange(array, j + 1, arrayGetArray(array)[j]);
             j--;
         }
 
-        arrayAddValue(array, j + 1, key);
+        arrayChange(array, j + 1, key);
     }
 }
 
