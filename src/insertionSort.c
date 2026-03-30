@@ -18,7 +18,7 @@ void insertionSort(Array *array){
 
 /******************************************************* INTERFACE PUBLICA *******************************************************/
 
-void insertionSortWrapper(void *a) {
+void insertionSortWrapper(void *a){
     insertionSort((Array*)a);
 }
 
