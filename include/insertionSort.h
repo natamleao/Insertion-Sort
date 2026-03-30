@@ -12,6 +12,14 @@
  */
 void insertionSortWrapper(void *a);
 
+
+/**
+ * @brief Ordena um array de elementos em ordem crescente usando o algoritmo Insertion Sort.
+ *
+ * @param array Ponteiro para o Array a ser ordenado.
+ */
+void insertionSort(Array *array);
+
 #endif
 
 /*********************************************************************************************************************************/
