@@ -1,18 +1,18 @@
-#include "insertionSort.h"
+#include "../include/array.h"
 
 /******************************************************* INTERFACE PUBLICA *******************************************************/
 
-void insertionSorte(StructureArray *structure){
-    for(int i = 1; i < arrayGetSize(structure); i++){
-        float key = arrayGetArray(structure)[i];
+void insertionSorte(Array *array){
+    for(int i = 1; i < arrayGetSize(array); i++){
+        float key = arrayGetArray(array)[i];
         int j = i - 1;
 
-        while(arrayGetArray(structure)[j] > key && j >= 0){
-            arrayAddValue(structure, j + 1, j);
+        while(arrayGetArray(array)[j] > key && j >= 0){
+            arrayAddValue(array, j + 1, arrayGetArray(array)[j]);
             j--;
         }
 
-        arrayAddValue(structure, j + 1, key);
+        arrayAddValue(array, j + 1, key);
     }
 }
 

@@ -14,9 +14,9 @@ all: \
 	myapps
 
 libeb: \
-    $(BUILD)/calculateTime.o \
+    $(BUILD)/executionTime.o \
 	$(BUILD)/insertionSort.o \
-	$(BUILD)/structureArray.o
+	$(BUILD)/array.o
 
 myapps: \
 	cleanapp \
@@ -25,7 +25,7 @@ myapps: \
 $(BUILD)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
 	gcc $(FLAGS) -c $< -I $(INCLUDE) -o $@ 
 
-$(LIB): $(BUILD)/calculateTime.o $(BUILD)/insertionSort.o $(BUILD)/structureArray.o
+$(LIB): $(BUILD)/executionTime.o $(BUILD)/insertionSort.o $(BUILD)/array.o
 	ar rcs $@ $^
 
 $(BIN)/%: $(APPS)/%.c $(LIB)

@@ -3,14 +3,14 @@
 #ifndef INSERTION_SORT_H
 #define INSERTION_SORT_H
 
-#include "structureArray.h"
+#include "array.h"
 
 /**
  * @brief Ordena o vetor na estrutura usando o algoritmo Insertion Sorte.
  * 
- *  @param structure Ponteiro para a estrutura do array.
+ *  @param array Ponteiro para a estrutura do array.
  */
-void insertionSorte(StructureArray *structure);
+void insertionSorte(Array *array);
 
 #endif
 

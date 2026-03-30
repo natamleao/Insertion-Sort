@@ -1,18 +1,25 @@
-#include "calculateTime.h"
+#define _POSIX_C_SOURCE 199309L
+#include "../include/executionTime.h"
 #include <time.h>
+
+/******************************************************* INTERFACE PRIVADA *******************************************************/
+
+double elapsed(struct timespec a, struct timespec b){
+    return (b.tv_sec - a.tv_sec) + (b.tv_nsec - a.tv_nsec) / 1e9;
+}
 
 /******************************************************* INTERFACE PUBLICA *******************************************************/
 
-double calculateTimeExecutionTime(void (*function)(StructureArray *structure), StructureArray *structure){
-    clock_t start, end;
-    start = clock();
-    function(structure);
-    end = clock();
+double executionTimeCalculate(void (*function)(Array *array), Array *array){
+    struct timespec t1, t2;
+    clock_gettime(CLOCK_MONOTONIC, &t1);
+    function(array);
+    clock_gettime(CLOCK_MONOTONIC, &t2);
     
-    return ((double)(end - start)) / CLOCKS_PER_SEC;
+    return elapsed(t1, t2);
 }
 
-void calculateTimePrintExecutionTime(double executionTime){
+void executionTimePrint(double executionTime){
     int hours, minutes, seconds, milliseconds;
 
     hours = (int)(executionTime / 3600);

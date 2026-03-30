@@ -35,22 +35,22 @@ A estrutura utilizada encapsula um array dinâmico:
 
 ```c
 struct _structureArray{
-    float *data;
-    int size;
-    int capacity;
+    float *_data;
+    int _size;
+    int _capacity;
 };
 ````
 
-* `data`: array de elementos
-* `size`: quantidade de elementos válidos
-* `capacity`: capacidade total alocada
+* `_data`: array de elementos
+* `_size`: quantidade de elementos válidos
+* `_capacity`: capacidade total alocada
 
 ---
 
 ## Insertion Sort
 
 ```c
-void insertionSorte(StructureArray *structure);
+void insertionSorte(Array *array);
 ```
 
 ### Como funciona
@@ -67,11 +67,11 @@ O algoritmo percorre o array e, a cada passo, insere o elemento atual na posiç�
 
 ## Medição de tempo
 
-A medição é feita com `clock()` da biblioteca padrão:
+O projeto utiliza `clock_gettime` com `CLOCK_MONOTONIC`, evitando interferência de ajustes no relógio do sistema.
 
 ```c
-double executionTime = calculateTimeExecutionTime(insertionSorte, structure);
-calculateTimePrintExecutionTime(executionTime);
+double executionTime = executionTimeCalculate(insertionSorte, array);
+executionTimePrint(executionTime);
 ```
 
 Exemplo de saída:
