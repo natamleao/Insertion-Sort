@@ -7,7 +7,7 @@ SRC = ./src
 FLAGS = -Wall -Werror  
 FLAGGLUT = -lGL -lGLU -lglut
 
-LIB = $(LIBDIR)/libebinsertionsort.a
+LIB = $(LIBDIR)/libebinsertion.a
 
 all: \
     libeb \
@@ -29,7 +29,7 @@ $(LIB): $(BUILD)/executionTime.o $(BUILD)/insertionSort.o $(BUILD)/array.o
 	ar rcs $@ $^
 
 $(BIN)/%: $(APPS)/%.c $(LIB)
-	gcc $(FLAGS) $< -L$(LIBDIR) -lebinsertionsort -I $(INCLUDE) -o $@ $(FLAGGLUT)
+	gcc $(FLAGS) $< -L$(LIBDIR) -lebinsertion -I $(INCLUDE) -o $@ $(FLAGGLUT)
 
 run:
 	$(BIN)/app
