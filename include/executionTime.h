@@ -4,7 +4,6 @@
 #define CALCULATE_TIME_H
 
 #include "array.h"
-#include <stdio.h>
 
 /**
  * @brief Mede o tempo de execução de uma função que atua sobre uma estrutura de Array.

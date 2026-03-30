@@ -1,6 +1,7 @@
 #define _POSIX_C_SOURCE 199309L
 #include "../include/executionTime.h"
 #include <time.h>
+#include <stdio.h>
 
 /******************************************************* INTERFACE PRIVADA *******************************************************/
 
