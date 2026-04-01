@@ -5,30 +5,20 @@
 
 /******************************************************* INTERFACE PRIVADA *******************************************************/
 
-struct _array{
+struct _structureArray{
     float *_data;
     int _size;
-    int _capacity;
 };
-
-void arrayIncrementSize(Array *array){array->_size++;}
-void arrayDecrementSize(Array *array){array->_size--;}
 
 /******************************************************* INTERFACE PUBLICA *******************************************************/
 
-Array* arrayCreate(int _size, int _capacity){
-    if(_capacity < _size){
-        printf("Erro: capacidade menor que o tamanho do array!\n");
-        return NULL;
-    }
-
-    Array *array = (Array*)malloc(sizeof(Array));
+StructureArray* structureArrayCreate(int size){
+    StructureArray *array = (StructureArray*)malloc(sizeof(StructureArray));
     if(!array) return NULL;
 
-    array->_size = _size;
-    array->_capacity = _capacity;
+    array->_size = size;
 
-    array->_data = (float*)calloc(_capacity, sizeof(float)); // <--- alocação do vetor
+    array->_data = (float*)calloc(size, sizeof(float));
     if(!array->_data){
         free(array);
         return NULL;
@@ -37,31 +27,22 @@ Array* arrayCreate(int _size, int _capacity){
     return array;
 }
 
-float* arrayGetArray(Array *array){return array->_data;}
-int arrayGetCapacity(Array *array){return array->_capacity;}
-int arrayGetSize(Array *array){return array->_size;}
-float arrayGetValue(Array *array, int index){return array->_data[index];}
+float* structureArrayGetData(StructureArray *array){return array->_data;}
+int structureArrayGetSize(StructureArray *array){return array->_size;}
 
-void arraySetArray(Array *array, float *_array){array->_data = _array;}
-void arraySetCapacity(Array *array, int value){array->_capacity = value;}
-void arraySetSize(Array *array, int value){array->_size = value;}
+void structureArraySet(StructureArray *array, int index, float value){array->_data[index] = value;}
+float structureArrayGet(StructureArray *array, int index){return array->_data[index];}
 
-void arrayChange(Array *array, int index, float value){array->_data[index] = value;}
 
-void arrayAddValue(Array *array, int index, float value){
-    array->_data[index] = value;
-    arrayIncrementSize(array);
-}
-
-void arrayPrint(Array *array){
+void structureArrayPrint(StructureArray *array){
     printf("["); 
-    for(int i = 0; i < arrayGetSize(array) - 1; i++)
-        printf("%.2f  ", arrayGetArray(array)[i]);
+    for(int i = 0; i < structureArrayGetSize(array) - 1; i++)
+        printf("%.2f  ", structureArrayGetData(array)[i]);
     
-    printf("%.2f]\n", arrayGetArray(array)[arrayGetSize(array) - 1]);
+    printf("%.2f]\n", structureArrayGetData(array)[structureArrayGetSize(array) - 1]);
 }
 
-void arrayDestroy(Array *array){
+void structureArrayDestroy(StructureArray *array){
     if(array){
         free(array->_data);
         free(array);

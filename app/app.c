@@ -1,16 +1,16 @@
-#include "../include/executionTime.h"
-#include "../include/insertionSort.h"
+#include "../include/execution_time.h"
+#include "../include/insertion_sort.h"
+#include "../include/array.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define CAPACITY 1000000000
-#define SIZE 100000000
+#define SIZE 100
 
 int main(){
 
-    float *_array = calloc(CAPACITY, sizeof(float));
-    if(!_array){
+    StructureArray *array = structureArrayCreate(SIZE);
+    if(!array){
         printf("Erro ao alocar memória!\n");
         return 1;
     }
@@ -19,22 +19,16 @@ int main(){
     for(int i = 0; i < SIZE; i++){
         float min = -5000000.0f;
         float max =  5000000.0f;
-        _array[i] = min + ((float)rand() / RAND_MAX) * (max - min);
+        structureArraySet(array, i, min + ((float)rand() / RAND_MAX) * (max - min));
     }
 
-    Array *array = arrayCreate(SIZE, CAPACITY);
+    //structureArrayPrint(array);
 
-    arraySetArray(array, _array);
-
-    //arrayPrint(array);
-    
     double executionTime = executionTimeCalculate(insertionSortWrapper, array);
-
-    //arrayPrint(array);
 
     executionTimePrint(executionTime);
 
-    arrayDestroy(array);
-    
+    structureArrayDestroy(array);
+
     return 0;
 }

@@ -1,4 +1,4 @@
-# Insertion Sort em C com Medição de Tempo
+# *Insertion Sort* em C com Medição de Tempo
 
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Standard](https://img.shields.io/badge/standard-C11-orange)
@@ -11,51 +11,51 @@
 
 ## Visão geral
 
-Este projeto implementa o algoritmo de ordenação **Insertion Sort** em C, juntamente com um módulo simples para **medição de tempo de execução**.
+Este projeto implementa o algoritmo de ordenação *Insertion Sort* em C, juntamente com um módulo para **medição de tempo de execução**.
 
-O objetivo não é apenas implementar o algoritmo, mas **observar seu comportamento em escala**, evidenciando o impacto da sua complexidade quadrática.
+O foco não é só implementar, mas **medir e observar o comportamento real**, evidenciando o impacto da complexidade quadrática.
 
 ---
 
 ## Funcionalidades
 
-- Estrutura de array dinâmica  
-- Inserção de valores  
-- Impressão dos dados  
-- Ordenação com Insertion Sort  
-- Geração de dados aleatórios  
-- Medição de tempo de execução  
-- Liberação de memória  
+* Estrutura de *array* simples
+* Inserção de valores
+* Impressão dos dados
+* Ordenação com *Insertion Sort*
+* Geração de dados aleatórios
+* Medição de tempo com `clock_gettime`
+* Liberação de memória
 
 ---
 
 ## Estrutura de dados
 
-A estrutura utilizada encapsula um array dinâmico:
+A estrutura encapsula um *array* de tamanho fixo:
 
 ```c
 struct _structureArray{
     float *_data;
     int _size;
-    int _capacity;
 };
-````
+```
 
-* `_data`: array de elementos
-* `_size`: quantidade de elementos válidos
-* `_capacity`: capacidade total alocada
+* `_data`: *array* de elementos
+* `_size`: quantidade de elementos
+
+Aqui a ideia foi simplificar: não há *capacity*, apenas um *array* com tamanho definido.
 
 ---
 
-## Insertion Sort
+## *Insertion Sort*
 
 ```c
-void insertionSorte(Array *array);
+void insertionSort(StructureArray *array);
 ```
 
 ### Como funciona
 
-O algoritmo percorre o array e, a cada passo, insere o elemento atual na posição correta dentro da parte já ordenada.
+O algoritmo percorre o *array* e, a cada passo, insere o elemento atual na posição correta dentro da parte já ordenada.
 
 ### Complexidade
 
@@ -63,18 +63,18 @@ O algoritmo percorre o array e, a cada passo, insere o elemento atual na posiç�
 * **Caso médio:** `O(n²)`
 * **Pior caso:** `O(n²)`
 
---- 
+---
 
 ## Medição de tempo
 
-O projeto utiliza `clock_gettime` com `CLOCK_MONOTONIC`, evitando interferência de ajustes no relógio do sistema.
+O projeto utiliza `clock_gettime` com `CLOCK_MONOTONIC`, garantindo medição estável:
 
 ```c
 double executionTime = executionTimeCalculate(insertionSortWrapper, array);
 executionTimePrint(executionTime);
 ```
 
-Exemplo de saída:
+Exemplo:
 
 ```
 Tempo de execução: 0 H : 0 M : 0 S : 850 ms
@@ -84,11 +84,15 @@ Tempo de execução: 0 H : 0 M : 0 S : 850 ms
 
 ## Observação importante
 
-O Insertion Sort é eficiente para conjuntos pequenos ou quase ordenados.
+O *Insertion Sort* é eficiente para conjuntos pequenos ou quase ordenados.
 
-No entanto, para grandes volumes de dados, o custo cresce rapidamente devido à sua complexidade `O(n²)`.
+Mas quando o tamanho cresce:
 
-Este projeto permite visualizar esse comportamento na prática.
+* o número de operações explode
+* o tempo cresce quadraticamente
+* o algoritmo rapidamente se torna inviável
+
+Esse projeto deixa isso claro na prática.
 
 ---
 
@@ -97,11 +101,11 @@ Este projeto permite visualizar esse comportamento na prática.
 ```
 Insertion-Sort/
 │
-├── app/             # Aplicação principal (main)
-├── bin/             # Executáveis gerados
+├── app/             # Arquivo principal da aplicação (main)
+├── bin/             # Executável gerado
 ├── include/         # Arquivos de cabeçalho (.h)
 ├── build/           # Arquivos objeto (.o)
-├── src/             # Código-fonte (.c)
+├── src/             # Código-fonte da aplicação (.c)
 ├── lib/             # Biblioteca estática
 │
 ├── Makefile         # Regras de compilação
@@ -112,13 +116,12 @@ Insertion-Sort/
 ---
 
 > [!IMPORTANT]
+>
 > ## Requisitos
-> 
-> Para compilar e executar o projeto é necessário:
-> 
-> * **GCC ou Clang**
-> * **GNU Make**
-> * Sistema **Linux ou macOS**
+>
+> * *GCC* ou *Clang*
+> * *GNU Make*
+> * Sistema *Linux* ou *macOS*
 
 ---
 
@@ -157,9 +160,10 @@ make cleanapp
 ---
 
 > [!WARNING]
+>
 > ## Licença
 >
-> Este projeto está licenciado sob a **Licença MIT**.
+> Este projeto está sob a licença *MIT*.
 
 ---
 

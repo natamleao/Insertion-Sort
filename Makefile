@@ -7,15 +7,15 @@ SRC = ./src
 FLAGS = -Wall -Werror  
 FLAGGLUT = -lGL -lGLU -lglut
 
-LIB = $(LIBDIR)/libebinsertion.a
+LIB = $(LIBDIR)/libdsa.a
 
 all: \
     libeb \
 	myapps
 
 libeb: \
-    $(BUILD)/executionTime.o \
-	$(BUILD)/insertionSort.o \
+    $(BUILD)/execution_time.o \
+	$(BUILD)/insertion_sort.o \
 	$(BUILD)/array.o
 
 myapps: \
@@ -25,11 +25,11 @@ myapps: \
 $(BUILD)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
 	gcc $(FLAGS) -c $< -I $(INCLUDE) -o $@ 
 
-$(LIB): $(BUILD)/executionTime.o $(BUILD)/insertionSort.o $(BUILD)/array.o
+$(LIB): $(BUILD)/execution_time.o $(BUILD)/insertion_sort.o $(BUILD)/array.o
 	ar rcs $@ $^
 
 $(BIN)/%: $(APPS)/%.c $(LIB)
-	gcc $(FLAGS) $< -L$(LIBDIR) -lebinsertion -I $(INCLUDE) -o $@ $(FLAGGLUT)
+	gcc $(FLAGS) $< -L$(LIBDIR) -ldsa -I $(INCLUDE) -o $@ $(FLAGGLUT)
 
 run:
 	$(BIN)/app

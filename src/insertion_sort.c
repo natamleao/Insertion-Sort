@@ -2,22 +2,25 @@
 
 /******************************************************* INTERFACE PUBLICA *******************************************************/
 
-void insertionSort(Array *array){
-    for(int i = 1; i < arrayGetSize(array); i++){
-        float key = arrayGetArray(array)[i];
+void insertionSort(StructureArray *array){
+    float *data = structureArrayGetData(array);
+    int size = structureArrayGetSize(array);
+
+    for(int i = 1; i < size; i++){
+        float key = data[i];
         int j = i - 1;
 
-        while(arrayGetArray(array)[j] > key && j >= 0){
-            arrayChange(array, j + 1, arrayGetArray(array)[j]);
+        while(j >= 0 && data[j] > key){
+            data[j + 1] = data[j];
             j--;
         }
 
-        arrayChange(array, j + 1, key);
+        data[j + 1] = key;
     }
 }
 
 void insertionSortWrapper(void *a){
-    insertionSort((Array*)a);
+    insertionSort((StructureArray*)a);
 }
 
 /*********************************************************************************************************************************/
