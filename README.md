@@ -109,8 +109,8 @@ Insertion-Sort/
 ├── lib/             # Biblioteca estática
 │
 ├── Makefile         # Regras de compilação
-├── README.md        # Documentação do projeto
-└── LICENSE          # Licença do projeto
+├── README.md        # Documentação 
+└── LICENSE          # Licença 
 ```
 
 ---
