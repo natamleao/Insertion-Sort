@@ -1,4 +1,4 @@
-# *Insertion Sort* em C com Medição de Tempo
+# *Insertion Sort* com Medição de Tempo
 
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Standard](https://img.shields.io/badge/standard-C11-orange)
