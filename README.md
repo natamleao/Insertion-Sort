@@ -163,7 +163,7 @@ make cleanapp
 >
 > ## Licença
 >
-> Este projeto está sob a licença *MIT*.
+> Este projeto está sob a **Licença MIT**.
 
 ---
 
@@ -174,3 +174,4 @@ make cleanapp
 Conclusão: **2026**
 
 ---
+
