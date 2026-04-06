@@ -1,34 +1,43 @@
 #include "../include/execution_time.h"
-#include "../include/insertion_sort.h"
 #include "../include/array.h"
+#include "../include/insertion_sort.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <time.h> 
 
-#define SIZE 100
+#define MAX_TESTS 7
 
 int main(){
 
-    StructureArray *array = structureArrayCreate(SIZE);
-    if(!array){
-        printf("Erro ao alocar memória!\n");
-        return 1;
+    int tests[] = {10000, 20000, 50000, 100000, 200000, 500000, 1000000};
+
+    printf("+------------------------------------------------------------------+\n");
+    printf("+------------------------ Testes iniciados ------------------------+\n");
+
+    for(int i = 0; i < MAX_TESTS; i++){
+        printf("+------------------------------------------------------------------+\n");
+        printf("Teste n.º: %d\n", i+1);
+        printf("+------------------------------------------------------------------+\n");
+        StructureArray *arrayInsertion = structureArrayCreate(tests[i]);
+
+        srand(time(NULL));
+        for(int j = 0; j < tests[i]; j++){
+            float min = -1e6f;
+            float max =  1e6f;
+            float value = min + ((float)rand() / RAND_MAX) * (max - min);
+            structureArraySet(arrayInsertion, j, value);
+        }
+
+        double executionTimeInsertionSort = executionTimeCalculate(insertionSortWrapper, arrayInsertion);
+        printf("InsertionSort - ");
+        //structureArrayPrint(arrayInsertion);
+        executionTimePrint(executionTimeInsertionSort);
+        structureArrayDestroy(arrayInsertion);
     }
 
-    srand(time(NULL));
-    for(int i = 0; i < SIZE; i++){
-        float min = -1e6f;
-        float max =  1e6f;
-        structureArraySet(array, i, min + ((float)rand() / RAND_MAX) * (max - min));
-    }
-
-    //structureArrayPrint(array);
-
-    double executionTime = executionTimeCalculate(insertionSortWrapper, array);
-
-    executionTimePrint(executionTime);
-
-    structureArrayDestroy(array);
+    printf("+------------------------------------------------------------------+\n");
+    printf("+----------------------- Testes finalizados -----------------------+\n");
+    printf("+------------------------------------------------------------------+\n");
 
     return 0;
 }
