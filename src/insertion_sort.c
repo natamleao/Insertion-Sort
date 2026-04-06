@@ -1,4 +1,4 @@
-#include "../include/array.h"
+#include "../include/insertion_sort.h"
 
 /******************************************************* INTERFACE PUBLICA *******************************************************/
 
