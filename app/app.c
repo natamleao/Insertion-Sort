@@ -17,8 +17,8 @@ int main(){
 
     srand(time(NULL));
     for(int i = 0; i < SIZE; i++){
-        float min = -5000000.0f;
-        float max =  5000000.0f;
+        float min = -1e6f;
+        float max =  1e6f;
         structureArraySet(array, i, min + ((float)rand() / RAND_MAX) * (max - min));
     }
 
